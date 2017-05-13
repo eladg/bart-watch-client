@@ -7,7 +7,7 @@ var buildPath           = path.resolve(__dirname, 'build');
 var clientApp           = path.resolve(__dirname, 'client', 'client.js');
 
 var loaders             = require('./webpack.loaders');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+var webpackCopyFiles    = require('./webpack.files');
 
 var config = {
   name: 'bart-watch-client',
@@ -25,7 +25,7 @@ var config = {
   externals: [],
 
   plugins: [
-    new CopyWebpackPlugin([{ from: path.resolve(__dirname, 'client', 'assets', 'index.html') }]),
+    webpackCopyFiles,
   ],
 
   module: { loaders },

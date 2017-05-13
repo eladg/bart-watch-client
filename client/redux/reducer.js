@@ -4,11 +4,13 @@ import config from '../config.json';
 const UPADTE_MAP = 'UPADTE_MAP';
 const UPADTE_MAP_INDEX = 'UPADTE_MAP_INDEX';
 const UPADTE_MAP_ERROR = 'UPADTE_MAP_ERROR';
+const SET_MAPTHREE = 'SET_MAPTHREE';
 
 const initState = {
   mapData: null,
   mapIndex: null,
   error: null,
+  mapThree: null
 }
 
 export default function reducer(state = initState, action) {
@@ -20,6 +22,8 @@ export default function reducer(state = initState, action) {
       return Object.assign({}, state, { mapIndex: payload.mapIndex } );
     case UPADTE_MAP_ERROR:
       return Object.assign({}, state, { error: payload.error } );
+    case SET_MAPTHREE:
+      return Object.assign({}, state, { mapThree: payload.mapThree } );
     default:
       return state;
   }
@@ -43,6 +47,13 @@ function updateMapError(mapError) {
   return {
     type: UPADTE_MAP_ERROR,
     payload: { error: mapError },
+  }
+}
+
+export function setMapThree(mapThree) {
+  return {
+    type: SET_MAPTHREE,
+    payload: { mapThree: mapThree },
   }
 }
 
